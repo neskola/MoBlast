@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16FD8ECE-39EF-498B-BEE2-637B204D47A7}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MoBlast", ".", "{4C4FEE2A-F625-4A88-8CA8-DA4A8E83AA21}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/sjConfigWidget"
+		Debug.AspNetCompiler.PhysicalPath = "..\MoBlast\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\sjConfigWidget\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/sjConfigWidget"
+		Release.AspNetCompiler.PhysicalPath = "..\MoBlast\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\sjConfigWidget\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52487"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C4FEE2A-F625-4A88-8CA8-DA4A8E83AA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C4FEE2A-F625-4A88-8CA8-DA4A8E83AA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
