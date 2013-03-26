@@ -57,11 +57,12 @@ var jsApp = {
 		} else {
 			mapObj.blockSize = 32;
 		}
+		mapObj.blockSize = 32;
 		
 		$('div.debug').html(mapObj.blockSize);
 	    
         if (!me.video.init('jsApp', 20 * mapObj.blockSize, 
-        		12 * mapObj.blockSize, false, 1.0)) {
+        		15 * mapObj.blockSize, false, 1.0)) {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
         }
