@@ -9,7 +9,6 @@
     }
 });
 
-
 var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function () {
         me.levelDirector.loadLevel("introduction_map");
@@ -24,7 +23,7 @@ var PlayScreen = me.ScreenObject.extend({
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
         me.input.bindTouch(me.input.KEY.SPACE);
 
-        //me.audio.playTrack("runtothehills");
+        me.audio.playTrack("runtothehills");
 
     },
 
@@ -73,7 +72,7 @@ var TitleScreen = me.ScreenObject.extend({
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
         me.input.bindTouch(me.input.KEY.ENTER);
 
-        //me.audio.playTrack("toxicity");
+        me.audio.playTrack("toxicity");
     },
 
     scrollover: function () {

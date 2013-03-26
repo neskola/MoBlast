@@ -1,40 +1,38 @@
 ﻿// load these from backend server
 var g_resources = [{
-    name: "tile32x32",
+    name: "TileA4",
     type: "image",
-    src: "res/maps/tile32x32.png"
+    src: "Assets/TileA4.png"
 }, {
     name: "introduction_map",
     type: "tmx",
-    src: "res/maps/introduction_map.tmx"
+    src: "Assets/introduction_map.tmx"
 }, {
     name: "player",
     type: "image",
-    src: "res/avatars/player.png"
+    src: "Assets/player.png"
 }, {
     name: "explosion",
     type: "image",
-    src: "img/explosion.png"
+    src: "Assets/explosion.png"
 }, {
     name: "spinning_coin_gold",
     type: "image",
-    src: "img/spinning_coin_gold.png"
+    src: "Assets/spinning_coin_gold.png"
 }, {
     name: "32x32_font",
     type: "image",
-    src: "img/32x32_font.png"
+    src: "Assets/32x32_font.png"
 }, {
     name: "title_screen",
     type: "image",
-    src: "img/titlescreen.png"
+    src: "Assets/titlescreen.png"
 }, {
     name: "cling",
     type: "audio",
-    src: "res/sounds/",
+    src: "Assets/",
     channel: 2
-}];
-
-/*, {
+}, {
     name: "runtothehills",
     type: "audio",
     src: "Assets/",
@@ -44,7 +42,8 @@ var g_resources = [{
     type: "audio",
     src: "Assets/",
     channel: 2
-}*/
+}];
+
 var mapObj = new Object();
 
 var jsApp = {
@@ -58,7 +57,7 @@ var jsApp = {
 			mapObj.blockSize = 32;
 		}
 		
-		$('div.debug').html(mapObj.blockSize);
+		$(debug).text(mapObj.blockSize);
 	    
         if (!me.video.init('jsApp', 20 * mapObj.blockSize, 
         		12 * mapObj.blockSize, false, 1.0)) {
@@ -91,9 +90,8 @@ var jsApp = {
         me.input.bindKey(me.input.KEY.DOWN, "down");
         me.input.bindKey(me.input.KEY.SPACE, "space");
         me.input.bindKey(me.input.KEY.ESC, "esc");
-        me.debug.renderHitBox = true;
-        //me.debug.renderCollisionMap = true;
-        me.debug.displayFPS = true;          
+        //me.debug.renderHitBox = true;        
+        //me.input.bindMouse(me.input.mouse.RIGHT, "rightbutton");        
 
         me.state.change(me.state.MENU);
 

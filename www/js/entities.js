@@ -12,7 +12,6 @@
         this.addAnimation("walk_up", [9, 10, 11]);        
         this.setCurrentAnimation("walk_down");
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-        
     },
 
     update: function () {
@@ -41,19 +40,8 @@
             this.vel.y = 0;
         }
 
-        if (me.input.isKeyPressed('space')) {
-            var touchInputs = me.input.touches;
-            var mousePos = me.input.mouse.pos;
-            if (touchInputs != null && touchInputs[0] != null && touchInputs[1] != null) {
-                console.assert("touch " + touchInputs[0] + "," + touchInputs[1]);
-                me.game.HUD.updateItemValue("score", 2000);
-            } else if (mousePos != null) {                
-                $('#debug').html("mouse x: " + mousePos.x + ", y:" + mousePos.y);
-            } else {
-                $('#debug').html("me x: " + this.x + ", y:" + this.y);
-                me.game.HUD.updateItemValue("score", 250);
-            }
-            
+        if (me.input.isKeyPressed('space')) {            
+            me.game.HUD.updateItemValue("score", 250);
             //me.entityPool.add("bomb", BombEntity);
         }
        
@@ -71,7 +59,8 @@
         }
 
         return false;
-    }  
+    }
+
 });
 
 var BombEntity = me.ObjectEntity.extend({
