@@ -92,9 +92,8 @@ var jsApp = {
         me.input.bindKey(me.input.KEY.DOWN, "down");
         me.input.bindKey(me.input.KEY.SPACE, "space");
         me.input.bindKey(me.input.KEY.ESC, "esc");
-        me.debug.renderHitBox = true;
-        //me.debug.renderCollisionMap = true;
-        me.debug.displayFPS = true;          
+        //me.debug.renderHitBox = true;
+        //me.debug.renderCollisionMap = true;        
 
         me.state.change(me.state.MENU);
 
