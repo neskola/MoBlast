@@ -86,7 +86,13 @@ var TitleScreen = me.ScreenObject.extend({
 
 
     update: function () {
+
         if (me.input.isKeyPressed('enter')) {
+            me.state.change(me.state.PLAY);
+        }
+
+        var touchInputs = me.input.touches;
+        if (touchInputs != null && touchInputs[0] != null && touchInputs[1] != null) {
             me.state.change(me.state.PLAY);
         }
     },

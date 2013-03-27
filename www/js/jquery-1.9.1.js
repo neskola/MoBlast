@@ -1443,7 +1443,7 @@ jQuery.support = (function() {
 	for ( i in { submit: true, change: true, focusin: true }) {
 		div.setAttribute( eventName = "on" + i, "t" );
 
-		support[ i + "Bubbles" ] = eventName in window || div.attributes[ eventName ].expando === false;
+		//support[ i + "Bubbles" ] = eventName in window || div.attributes[ eventName ].expando === false;
 	}
 
 	div.style.backgroundClip = "content-box";
