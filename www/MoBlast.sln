@@ -7,20 +7,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", ".", "{4C4FEE2A-F625-
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/sjConfigWidget"
-		Debug.AspNetCompiler.PhysicalPath = "..\MoBlast\"
+		Debug.AspNetCompiler.PhysicalPath = "..\www\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\sjConfigWidget\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/sjConfigWidget"
-		Release.AspNetCompiler.PhysicalPath = "..\MoBlast\"
+		Release.AspNetCompiler.PhysicalPath = "..\www\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\sjConfigWidget\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "52487"
+		VWDPort = "50899"
 	EndProjectSection
 EndProject
 Global
