@@ -57,9 +57,7 @@ var jsApp = {
 		} else {
 			mapObj.blockSize = 32;
 		}
-		mapObj.blockSize = 48;
-		
-		$('div.debug').html(mapObj.blockSize);
+		mapObj.blockSize = 48;				
 	    
         if (!me.video.init('jsApp', 20 * mapObj.blockSize, 
         		15 * mapObj.blockSize, false, 1.0)) {
