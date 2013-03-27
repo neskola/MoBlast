@@ -1,16 +1,16 @@
 ﻿// load these from backend server
 var g_resources = [{
-    name: "tile32x32",
+    name: "tile48x48",
     type: "image",
-    src: "res/maps/tile32x32.png"
+    src: "res/maps/tile48x48.jpg"
 }, {
     name: "introduction_map",
     type: "tmx",
-    src: "res/maps/introduction_map.tmx"
+    src: "res/maps/level1_48x48.tmx"
 }, {
     name: "player",
     type: "image",
-    src: "res/avatars/player.png"
+    src: "res/avatars/player48x48.png"
 }, {
     name: "explosion",
     type: "image",
@@ -57,7 +57,7 @@ var jsApp = {
 		} else {
 			mapObj.blockSize = 32;
 		}
-		mapObj.blockSize = 32;
+		mapObj.blockSize = 48;
 		
 		$('div.debug').html(mapObj.blockSize);
 	    

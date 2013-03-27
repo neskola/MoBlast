@@ -1,14 +1,16 @@
 ﻿var UP    = 1;
 var RIGHT = 2;
 var DOWN  = 3;
-var LEFT  = 4;
+var LEFT = 4;
+
+var BLOCK_SIZE = 48;
 
 var PlayerEntity = me.ObjectEntity.extend({
     
     init: function (x, y, settings) {
         this.parent(x, y, settings);
         this.setVelocity(3, 3);
-        this.updateColRect(0, 30, 0, 30);
+        this.updateColRect(0, BLOCK_SIZE - 2, 0, BLOCK_SIZE -2);
         this.gravity = 0;
     
         this.direction = null;
@@ -44,7 +46,7 @@ var PlayerEntity = me.ObjectEntity.extend({
                 me.game.HUD.updateItemValue("score", 2000);*/
             } else if (mousePos != null &&
                 !this.checkMouseOnPlayer(mousePos.x, mousePos.y)) {
-                var angle = this.calculateAngle(this.pos.x + 16, this.pos.y + 16, mousePos.x, mousePos.y);
+                var angle = this.calculateAngle(this.pos.x + (BLOCK_SIZE / 2), this.pos.y + (BLOCK_SIZE / 2), mousePos.x, mousePos.y);
                 this.nextDirection = this.checkDirection(angle);
 
                 $('#debug-text').html("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
@@ -86,8 +88,8 @@ var PlayerEntity = me.ObjectEntity.extend({
     },
 
     checkMouseOnPlayer: function (mouseX, mouseY) {
-        if ((mouseX >= this.pos.x && mouseX <= this.pos.x +32) &&
-            (mouseY >= this.pos.y && mouseY <= this.pos.y +32)) {
+        if ((mouseX >= this.pos.x && mouseX <= this.pos.x + BLOCK_SIZE) &&
+            (mouseY >= this.pos.y && mouseY <= this.pos.y + BLOCK_SIZE)) {
             return true;
         } else {
             return false;
@@ -111,11 +113,11 @@ var PlayerEntity = me.ObjectEntity.extend({
     checkMovement: function () {
         if (this.nextDirection != this.direction) {
             if (this.nextDirection == UP || this.nextDirection == DOWN
-                && (this.pos.x % 32) == 0) {
+                && (this.pos.x % BLOCK_SIZE) == 0) {
                 this.direction = this.nextDirection;
             }
             if (this.nextDirection == LEFT || this.nextDirection == RIGHT
-                && (this.pos.y % 32) == 0) {
+                && (this.pos.y % BLOCK_SIZE) == 0) {
                 this.direction = this.nextDirection;
             }
         }
@@ -146,12 +148,12 @@ var PlayerEntity = me.ObjectEntity.extend({
                 this.vel.x = 0;
         }
 
-        if (this.pos.x % 32 <= 2) {
-            this.pos.x = Math.floor(this.pos.x / 32) * 32;
+        if (this.pos.x % BLOCK_SIZE <= 2) {
+            this.pos.x = Math.floor(this.pos.x / BLOCK_SIZE) * BLOCK_SIZE;
         }
 
-        if (this.pos.y % 32 <= 2) {
-            this.pos.y = Math.floor(this.pos.y / 32) * 32;
+        if (this.pos.y % BLOCK_SIZE <= 2) {
+            this.pos.y = Math.floor(this.pos.y / BLOCK_SIZE) * BLOCK_SIZE;
         }
 
         this.updateMovement();
