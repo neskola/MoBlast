@@ -99,9 +99,12 @@ var TitleScreen = me.ScreenObject.extend({
 
     draw: function (context) {
         context.drawImage(this.title, 0, 0);
-        this.font.draw(context, "MOBLAST", 320, 160);
-        this.font.draw(context, "PRESS ENTER TO PLAY", 320, 280);
+        this.font.draw(context, "MOBLAST", 320, 160);        
+        this.font.draw(context, "PRESS ENTER TO PLAY ", 320, 280);
         this.scrollerfont.draw(context, this.scroller, this.scrollerpos, 440);
+        $('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
+        
+    
     },
 
     onDestroyEvent: function () {
