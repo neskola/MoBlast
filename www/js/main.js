@@ -1,4 +1,4 @@
-// testausta
+﻿// Globals values for handling game screen etc.
 var GAME_GLOBALS = GAME_GLOBALS || {};
 
 var GAME_GLOBALS = {
