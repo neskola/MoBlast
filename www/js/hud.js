@@ -14,9 +14,10 @@ var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function () {
         me.levelDirector.loadLevel("introduction_map");
 
-        me.game.addHUD(0, 430, 640, 60);
+        me.game.addHUD(0, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize(),
+            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getBlockSize());
 
-        me.game.HUD.addItem("score", new ScoreObject(620, 20));
+        me.game.HUD.addItem("score", new ScoreObject(GAME_GLOBALS.getMapWidth() - GAME_GLOBALS.getBlockSize(), 0));
 
         me.game.sort();
 
@@ -63,7 +64,7 @@ var TitleScreen = me.ScreenObject.extend({
 
         }
 
-        this.scrollerpos = 640;
+        this.scrollerpos = GAME_GLOBALS.getMapWidth();
 
         this.scrollertween = new me.Tween(this).to({
             scrollerpos: -3200
@@ -77,7 +78,7 @@ var TitleScreen = me.ScreenObject.extend({
     },
 
     scrollover: function () {
-        this.scrollerpos = 640;
+        this.scrollerpos = GAME_GLOBALS.getMapWidth();
         this.scrollertween.to({
             scrollerpos: -3200
         }, 10000).onComplete(this.scrollover.bind(this)).start();
@@ -99,9 +100,13 @@ var TitleScreen = me.ScreenObject.extend({
 
     draw: function (context) {
         context.drawImage(this.title, 0, 0);
-        this.font.draw(context, "MOBLAST", 320, 160);        
-        this.font.draw(context, "PRESS ENTER TO PLAY ", 320, 280);
-        this.scrollerfont.draw(context, this.scroller, this.scrollerpos, 440);
+        this.font.draw(context, "MOBLAST", GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() / 4);
+        var toPlayText = "PRESS ENTER TO PLAY";
+        if (me.sys.touch) {
+            toPlayText = "TOUCH SCREEN TO PLAY";
+        } 
+        this.font.draw(context, toPlayText, GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() /2);
+        this.scrollerfont.draw(context, this.scroller, this.scrollerpos, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize());
         $('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
         
     

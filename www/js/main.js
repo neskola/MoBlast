@@ -46,7 +46,7 @@ var g_resources = [{
 }, {
     name: "title_screen",
     type: "image",
-    src: "img/titlescreen.png"
+    src: "img/titlescreen48x48.png"
 }, {
     name: "cling",
     type: "audio",
