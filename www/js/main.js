@@ -64,6 +64,11 @@ var g_resources = [{
     type: "audio",
     src: "res/sounds/",
     channel: 2
+}, {
+    name: "toxicity",
+    type: "audio",
+    src: "res/music/",
+    channel: 2
 }];
 
 /*, {
