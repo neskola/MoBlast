@@ -1,4 +1,5 @@
-﻿// Globals values for handling game screen etc.
+// testausta
+// lisää kommenttia
 var GAME_GLOBALS = GAME_GLOBALS || {};
 
 var GAME_GLOBALS = {
