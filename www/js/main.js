@@ -1,4 +1,5 @@
-﻿// load these from backend server
+﻿
+// load these from backend server
 var g_resources = [{
     name: "tile48x48",
     type: "image",
@@ -45,28 +46,45 @@ var g_resources = [{
     src: "Assets/",
     channel: 2
 }*/
-var mapObj = new Object();
+
+var GAME_GLOBALS = new Object();
+GAME_GLOBALS.setBlockSize = function (value) {
+    GAME_GLOBALS.blockSize = value;
+}
+
+GAME_GLOBALS.getBlockSize = function () {
+    return GAME_GLOBALS.blockSize;
+}
+
+GAME_GLOBALS.getMapWidth = function () {
+    return GAME_GLOBALS.getBlockSize() * 20;
+}
+
+GAME_GLOBALS.getMapHeight = function () {
+    return GAME_GLOBALS.getBlockSize() * 15;
+}
 
 var jsApp = {
     onload: function () {
 							
-		if ($(window).width() > 1279 ) {
-			mapObj.blockSize = 64;
-		} else if ($(window).width() > 640) {
-			mapObj.blockSize = 48;
-		} else {
-			mapObj.blockSize = 32;
-		}
-		mapObj.blockSize = 48;				
+        /*if ($(window).width() > 1279 ) {
+            GAME_GLOBALS.setBlockSize(64);
+        } else if ($(window).width() > 640) {
+            GAME_GLOBALS.setBlockSize(48);
+        } else {
+            GAME_GLOBALS.setBlockSize(32);
+        }*/
+
+        GAME_GLOBALS.setBlockSize(48);
 	    
-        if (!me.video.init('jsApp', 20 * mapObj.blockSize, 
-        		15 * mapObj.blockSize, false, 1.0)) {
+        if (!me.video.init('jsApp', GAME_GLOBALS.getMapWidth(),
+        GAME_GLOBALS.getMapHeight(), false, 1.0)) {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
         }
 
-        //me.video.scale(me.video.getScreenFrameBuffer(), 1.5); 
-        
+        //me.video.scale(me.video.getScreenFrameBuffer(), 1.5);                 
+
         me.audio.init("mp3,ogg");
 
         me.loader.onload = this.loaded.bind(this);
