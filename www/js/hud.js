@@ -65,10 +65,10 @@ var TitleScreen = me.ScreenObject.extend({
         }
         this.scrollerpos = 600;
 
-        me.game.addHUD(0, 0,
-            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getMapHeight());
+        /*me.game.addHUD(0, 0,
+            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getMapHeight());*/
 
-        me.game.HUD.addItem("debug", new DebugObject(0, 0));
+        //me.game.HUD.addItem("debug", new DebugObject(0, 0));
         
     },
 
@@ -93,7 +93,7 @@ var TitleScreen = me.ScreenObject.extend({
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
         /*me.input.bindTouch(me.input.KEY.ENTER);*/
 
-        //me.audio.playTrack("toxicity");
+        me.audio.playTrack("toxicity");
     },
 
     scrollover: function () {
@@ -113,7 +113,7 @@ var TitleScreen = me.ScreenObject.extend({
 
         var touchInputs = me.input.touches;
         //$('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
-        GAME_GLOBALS.debug("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
+        //GAME_GLOBALS.debug("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
         if (touchInputs != null && touchInputs[0] != null && touchInputs[1] != null) {
             me.state.change(me.state.PLAY);
         }
@@ -128,7 +128,7 @@ var TitleScreen = me.ScreenObject.extend({
         } 
         this.font.draw(context, toPlayText, GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() /2);
         this.scrollerfont.draw(context, this.scroller, this.scrollerpos, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize());
-        GAME_GLOBALS.debug("touch: " + (me.sys.touch) + " touches: " + me.sys.touches);
+        //GAME_GLOBALS.debug("touch: " + (me.sys.touch) + " touches: " + me.sys.touches);
         //$('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
         
     

@@ -1,4 +1,4 @@
-// testausta
+﻿// testausta
 // lisää kommenttia
 var GAME_GLOBALS = GAME_GLOBALS || {};
 
@@ -20,7 +20,7 @@ var GAME_GLOBALS = {
     },
 
     debug: function (text) {
-        me.game.HUD.updateItemValue("debug", text);
+        //me.game.HUD.updateItemValue("debug", text);
 
         if ($('#debug-text')) {
             $('#debug-text').html(text);
@@ -105,7 +105,7 @@ var jsApp = {
 
         //me.video.scale(me.video.getScreenFrameBuffer(), 1.5);                 
 
-        me.audio.init("mp3,ogg");
+        me.audio.init("mp3");
 
         me.loader.onload = this.loaded.bind(this);
 
