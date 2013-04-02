@@ -9,6 +9,16 @@
     }
 });
 
+var DebugObject = me.HUD_Item.extend({
+    init: function (x, y) {
+        this.parent(x, y);
+        this.font = new me.Font("Arial", 20, "white"); 
+    },
+
+    draw: function (context, x, y) {
+        this.font.draw(context, this.value, this.pos.x + x, this.pos.y + y);
+    }
+});
 
 var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function () {
@@ -17,13 +27,14 @@ var PlayScreen = me.ScreenObject.extend({
         me.game.addHUD(0, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize(),
             GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getBlockSize());
 
-        me.game.HUD.addItem("score", new ScoreObject(GAME_GLOBALS.getMapWidth() - GAME_GLOBALS.getBlockSize(), 0));
+        me.game.HUD.addItem("score", new ScoreObject(GAME_GLOBALS.getMapWidth() - GAME_GLOBALS.getBlockSize(),
+            GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize()));
 
         me.game.sort();
 
         me.input.bindKey(me.input.KEY.ESC, "esc", true);
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
-        me.input.bindTouch(me.input.KEY.SPACE);
+        me.input.bindTouch(me.input.KEY.SPACE);        
 
         //me.audio.playTrack("runtothehills");
 
@@ -49,7 +60,15 @@ var TitleScreen = me.ScreenObject.extend({
         this.scrollertween = null;
 
         this.scroller = "ARROW KEYS TO MOVE, SPACE TO PLACE A BOMB (NOT FUNCTIONAL YET), ESC BACK TO MENU...";
+        if (me.sys.touch) {
+            this.scroller = "TAP MAP TO MOVE, TAP AVATAR TO PLACE A BOMB (NOT FUNCTIONAL YET)...";
+        }
         this.scrollerpos = 600;
+
+        me.game.addHUD(0, 0,
+            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getMapHeight());
+
+        me.game.HUD.addItem("debug", new DebugObject(0, 0));
         
     },
 
@@ -72,7 +91,7 @@ var TitleScreen = me.ScreenObject.extend({
 
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
-        me.input.bindTouch(me.input.KEY.ENTER);
+        /*me.input.bindTouch(me.input.KEY.ENTER);*/
 
         //me.audio.playTrack("toxicity");
     },
@@ -93,6 +112,8 @@ var TitleScreen = me.ScreenObject.extend({
         }
 
         var touchInputs = me.input.touches;
+        //$('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
+        GAME_GLOBALS.debug("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
         if (touchInputs != null && touchInputs[0] != null && touchInputs[1] != null) {
             me.state.change(me.state.PLAY);
         }
@@ -107,7 +128,8 @@ var TitleScreen = me.ScreenObject.extend({
         } 
         this.font.draw(context, toPlayText, GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() /2);
         this.scrollerfont.draw(context, this.scroller, this.scrollerpos, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize());
-        $('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
+        GAME_GLOBALS.debug("touch: " + (me.sys.touch) + " touches: " + me.sys.touches);
+        //$('#debug-text').html("touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
         
     
     },

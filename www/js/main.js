@@ -15,8 +15,18 @@ var GAME_GLOBALS = {
 
     getMapHeight: function () {
         return GAME_GLOBALS.getBlockSize() * 15;
+    },
+
+    debug: function (text) {
+        me.game.HUD.updateItemValue("debug", text);
+
+        if ($('#debug-text')) {
+            $('#debug-text').html(text);
+        } 
     }
 };
+
+
 
 // load these from backend server
 var g_resources = [{

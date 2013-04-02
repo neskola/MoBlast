@@ -8113,7 +8113,7 @@ var me = me || {};
 		
 		// list of supported mouse & touch events
 		var mouseEventList = ['mousewheel', 'mousemove', 'mousedown',  'mouseup', 'click', 'dblclick'];
-		var touchEventList = [ undefined,   'touchmove', 'touchstart', 'touchend', 'tap' , 'dbltap'];
+		var touchEventList = [ undefined,   'touchmove', 'touchstart', 'touchend']; //, 'tap' , 'dbltap'];
 		
 		
 		/**

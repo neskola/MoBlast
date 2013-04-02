@@ -49,9 +49,13 @@ var PlayerEntity = me.ObjectEntity.extend({
                 var angle = this.calculateAngle(this.pos.x + (BLOCK_SIZE / 2), this.pos.y + (BLOCK_SIZE / 2), mousePos.x, mousePos.y);
                 this.nextDirection = this.checkDirection(angle);
 
-                $('#debug-text').html("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
+                GAME_GLOBALS.debug("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
                     + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
                     + this.direction + ", nextDirection: " + this.nextDirection);
+
+                /*$('#debug-text').html("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
+                    + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
+                    + this.direction + ", nextDirection: " + this.nextDirection);*/
             } else {
                 this.nextDirection = this.direction;
                 $('#debug-text').html("set a bomb on x: " + this.x + ", y:" + this.y);           
