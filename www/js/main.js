@@ -1,4 +1,5 @@
-﻿var GAME_GLOBALS = GAME_GLOBALS || {};
+// testausta
+var GAME_GLOBALS = GAME_GLOBALS || {};
 
 var GAME_GLOBALS = {
     setBlockSize: function (value) {
