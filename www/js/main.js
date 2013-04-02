@@ -1,4 +1,23 @@
-﻿
+﻿var GAME_GLOBALS = GAME_GLOBALS || {};
+
+var GAME_GLOBALS = {
+    setBlockSize: function (value) {
+        GAME_GLOBALS.blockSize = value;
+    },
+
+    getBlockSize: function () {
+        return GAME_GLOBALS.blockSize;
+    },
+
+    getMapWidth: function () {
+        return GAME_GLOBALS.getBlockSize() * 20;
+    },
+
+    getMapHeight: function () {
+        return GAME_GLOBALS.getBlockSize() * 15;
+    }
+};
+
 // load these from backend server
 var g_resources = [{
     name: "tile48x48",
@@ -47,22 +66,6 @@ var g_resources = [{
     channel: 2
 }*/
 
-var GAME_GLOBALS = new Object();
-GAME_GLOBALS.setBlockSize = function (value) {
-    GAME_GLOBALS.blockSize = value;
-}
-
-GAME_GLOBALS.getBlockSize = function () {
-    return GAME_GLOBALS.blockSize;
-}
-
-GAME_GLOBALS.getMapWidth = function () {
-    return GAME_GLOBALS.getBlockSize() * 20;
-}
-
-GAME_GLOBALS.getMapHeight = function () {
-    return GAME_GLOBALS.getBlockSize() * 15;
-}
 
 var jsApp = {
     onload: function () {
