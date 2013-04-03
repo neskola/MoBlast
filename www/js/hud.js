@@ -24,9 +24,6 @@ var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function () {
         me.levelDirector.loadLevel("introduction_map");
 
-        me.game.addHUD(0, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize(),
-            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getBlockSize());
-
         me.game.HUD.addItem("score", new ScoreObject(GAME_GLOBALS.getMapWidth() - GAME_GLOBALS.getBlockSize(),
             GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize()));
 
@@ -65,8 +62,8 @@ var TitleScreen = me.ScreenObject.extend({
         }
         this.scrollerpos = 600;
 
-        /*me.game.addHUD(0, 0,
-            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getMapHeight());*/
+        me.game.addHUD(0, 0,
+            GAME_GLOBALS.getMapWidth(), GAME_GLOBALS.getMapHeight());
 
         //me.game.HUD.addItem("debug", new DebugObject(0, 0));
         
