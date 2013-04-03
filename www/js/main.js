@@ -36,7 +36,8 @@ var g_resources = [{
 }, {
     name: "introduction_map",
     type: "tmx",
-    src: "res/maps/level1_48x48.tmx"
+    //src: "res/maps/level1_48x48.tmx"
+    src: "res/maps/level1.json"
 }, {
     name: "player",
     type: "image",
