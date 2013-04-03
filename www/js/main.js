@@ -20,9 +20,19 @@ var GAME_GLOBALS = {
         return GAME_GLOBALS.getBlockSize() * 15;
     },
 
-    debug: function (context, text) {
-        var debugFont = new me.Font("Arial", 20, "white");
-        debugFont.draw(context, text, 20, 20);
+    getMapBlock: function (value) {
+        return Math.floor(value / GAME_GLOBALS.getBlockSize());
+    },
+
+    debugToContext: function (context, text) {
+        if (context != null) {
+            var debugFont = new me.Font("Arial", 20, "white");
+            debugFont.draw(context, text, 20, 20);
+        }        
+    },
+
+    debug: function (text) {
+        console.log(text);
     }
 };
 
@@ -77,14 +87,6 @@ var g_resources = [{
 var jsApp = {
     onload: function () {
 							
-        /*if ($(window).width() > 1279 ) {
-            GAME_GLOBALS.setBlockSize(64);
-        } else if ($(window).width() > 640) {
-            GAME_GLOBALS.setBlockSize(48);
-        } else {
-            GAME_GLOBALS.setBlockSize(32);
-        }*/
-
         GAME_GLOBALS.setBlockSize(48);
 	    
         if (!me.video.init('#jsApp', GAME_GLOBALS.getMapWidth(),

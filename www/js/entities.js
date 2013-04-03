@@ -1,4 +1,5 @@
-﻿var UP    = 1;
+﻿var STOP = 0;
+var UP = 1;
 var RIGHT = 2;
 var DOWN  = 3;
 var LEFT = 4;
@@ -14,7 +15,20 @@ var PlayerEntity = me.ObjectEntity.extend({
         this.gravity = 0;
     
         this.direction = null;
-        this.nextDirection = null;
+
+        this.next = new Object();
+        this.next.direction = null;
+        this.next.x = null;
+        this.next.y = null;
+        this.next.toString = function () {
+            return "next = x:" + this.x + ",y:" + this.y + ",d:" + this.direction;
+        }
+        this.next.setX = function (value) {
+            this.x = GAME_GLOBALS.getMapBlock(value);
+        }
+        this.next.setY = function (value) {
+            this.y = GAME_GLOBALS.getMapBlock(value);
+        }
 
         this.addAnimation("walk_down", [0, 1, 2]);        
         this.addAnimation("walk_right", [3, 4, 5]);
@@ -25,17 +39,16 @@ var PlayerEntity = me.ObjectEntity.extend({
         
     },
 
-    update: function () {
-
+    update: function () {        
         if (me.input.isKeyPressed('left')) {
-            this.nextDirection = LEFT;
+            this.next.direction = LEFT;
         } else if (me.input.isKeyPressed('right')) {
-            this.nextDirection = RIGHT;
+            this.next.direction = RIGHT;
         } 
         if (me.input.isKeyPressed('up')) {
-            this.nextDirection = UP;
+            this.next.direction = UP;
         } else if (me.input.isKeyPressed('down')) {
-            this.nextDirection = DOWN;
+            this.next.direction = DOWN;
         } 
 
         if (me.input.isKeyPressed('space')) {
@@ -45,14 +58,16 @@ var PlayerEntity = me.ObjectEntity.extend({
             } else if (mousePos != null &&
                 !this.checkMouseOnPlayer(mousePos.x, mousePos.y)) {
                 var angle = this.calculateAngle(this.pos.x + (BLOCK_SIZE / 2), this.pos.y + (BLOCK_SIZE / 2), mousePos.x, mousePos.y);
-                this.nextDirection = this.checkDirection(angle);
+                this.next.direction = this.checkDirection(angle);
+                this.next.setX(mousePos.x);
+                this.next.setY(mousePos.y);
 
-                /*$('#debug-text').html("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
+                GAME_GLOBALS.debug("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
                     + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
-                    + this.direction + ", nextDirection: " + this.nextDirection);*/
+                    + this.direction + ", " + this.next.toString());
             } else {
-                this.nextDirection = this.direction;
-                $('#debug-text').html("set a bomb on x: " + this.x + ", y:" + this.y);           
+                this.next.direction = this.direction;
+                GAME_GLOBALS.debug("set a bomb on x: " + this.x + ", y:" + this.y);           
             }
             
             //me.entityPool.add("bomb", BombEntity);
@@ -109,16 +124,35 @@ var PlayerEntity = me.ObjectEntity.extend({
     },
 
     checkMovement: function () {
-        if (this.nextDirection != this.direction) {
-            if (this.nextDirection == UP || this.nextDirection == DOWN
+        if (this.next.direction != this.direction) {
+            if (this.next.direction == UP || this.next.direction == DOWN
                 && (this.pos.x % BLOCK_SIZE) == 0) {
-                this.direction = this.nextDirection;
+                this.direction = this.next.direction;
             }
-            if (this.nextDirection == LEFT || this.nextDirection == RIGHT
+            if ((this.next.direction == LEFT || this.next.direction == RIGHT) 
                 && (this.pos.y % BLOCK_SIZE) == 0) {
-                this.direction = this.nextDirection;
+                    this.direction = this.next.direction;
             }
         }
+
+
+        if (this.direction == LEFT || this.direction == RIGHT) {
+            console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE 
+                + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
+            if (this.pos.x == this.next.x * BLOCK_SIZE) {
+                this.direction = STOP;
+                this.next.direction = STOP;
+            }
+        }
+
+        if (this.direction == UP || this.direction == DOWN) {            
+            console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE
+                + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
+            if (this.pos.y == this.next.y * BLOCK_SIZE) {
+                this.direction = STOP;
+                this.next.direction = STOP;
+            }
+        }        
 
         switch (this.direction) {
             case UP:
@@ -146,11 +180,11 @@ var PlayerEntity = me.ObjectEntity.extend({
                 this.vel.x = 0;
         }
 
-        if (this.pos.x % BLOCK_SIZE <= 2) {
+        if (this.pos.x % BLOCK_SIZE <= 1) {
             this.pos.x = Math.floor(this.pos.x / BLOCK_SIZE) * BLOCK_SIZE;
         }
 
-        if (this.pos.y % BLOCK_SIZE <= 2) {
+        if (this.pos.y % BLOCK_SIZE <= 1) {
             this.pos.y = Math.floor(this.pos.y / BLOCK_SIZE) * BLOCK_SIZE;
         }
 

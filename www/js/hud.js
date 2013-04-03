@@ -30,10 +30,6 @@ var PlayScreen = me.ScreenObject.extend({
     update: function () {        
     },
 
-    draw: function (context) {
-        GAME_GLOBALS.debug(context, "touch enabled: " + me.sys.touch + " touches: " + me.sys.touches);
-    },
-
     onDestroyEvent: function () {
         me.game.disableHUD();
 
@@ -66,9 +62,7 @@ var TitleScreen = me.ScreenObject.extend({
         if (this.title == null) {
             this.title = me.loader.getImage("title_screen");
             this.font = new me.BitmapFont("32x32_font", 32);
-            this.font.set("center");
-
-            this.debugFont = new me.Font("Arial", 20, "white");
+            this.font.set("center");            
 
             this.scrollerfont = new me.BitmapFont("32x32_font", 32);
             this.scrollerfont.set("left");
@@ -102,12 +96,6 @@ var TitleScreen = me.ScreenObject.extend({
         if (me.input.isKeyPressed('enter')) {
             me.state.change(me.state.PLAY);
         }
-        /*if (me.input.mouse.LEFT) {
-            me.state.change(me.state.PLAY);
-        }
-        if (me.input.touches[0].id != null && me.input.touches[0].id > 0) {
-            me.state.change(me.state.PLAY);
-        }*/
     },
 
     draw: function (context) {
@@ -119,7 +107,7 @@ var TitleScreen = me.ScreenObject.extend({
         } 
         this.font.draw(context, toPlayText, GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() /2);
         this.scrollerfont.draw(context, this.scroller, this.scrollerpos, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize());
-        GAME_GLOBALS.debug(context, "touch: " + (me.sys.touch) + " touches: " + me.input.touches.length + " " + 
+        GAME_GLOBALS.debugToContext(context, "touch: " + (me.sys.touch) + " touches: " + me.input.touches.length + " " + 
             + me.input.touches[0].x + ", " + me.input.touches[0].y + ", " + me.input.touches[0].id);
     
     },
