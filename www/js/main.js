@@ -65,24 +65,16 @@ var g_resources = [{
     src: "res/sounds/",
     channel: 2
 }, {
-    name: "toxicity",
+    name: "title",
+    type: "audio",
+    src: "res/music/",
+    channel: 2
+}, {
+    name: "level1",
     type: "audio",
     src: "res/music/",
     channel: 2
 }];
-
-/*, {
-    name: "runtothehills",
-    type: "audio",
-    src: "Assets/",
-    channel: 2
-}, {
-    name: "toxicity",
-    type: "audio",
-    src: "Assets/",
-    channel: 2
-}*/
-
 
 var jsApp = {
     onload: function () {
