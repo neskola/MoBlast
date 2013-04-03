@@ -42,16 +42,10 @@ var PlayerEntity = me.ObjectEntity.extend({
             var touchInputs = me.input.touches;
             var mousePos = me.input.mouse.pos;
             if (touchInputs != null && touchInputs[0] != null && touchInputs[1] != null) {
-                /*console.assert("touch " + touchInputs[0] + "," + touchInputs[1]);
-                me.game.HUD.updateItemValue("score", 2000);*/
             } else if (mousePos != null &&
                 !this.checkMouseOnPlayer(mousePos.x, mousePos.y)) {
                 var angle = this.calculateAngle(this.pos.x + (BLOCK_SIZE / 2), this.pos.y + (BLOCK_SIZE / 2), mousePos.x, mousePos.y);
                 this.nextDirection = this.checkDirection(angle);
-
-                GAME_GLOBALS.debug("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
-                    + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
-                    + this.direction + ", nextDirection: " + this.nextDirection);
 
                 /*$('#debug-text').html("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
                     + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"

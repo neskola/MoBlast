@@ -2,7 +2,8 @@
 // lisää kommenttia
 var GAME_GLOBALS = GAME_GLOBALS || {};
 
-var GAME_GLOBALS = {
+var GAME_GLOBALS = {    
+
     setBlockSize: function (value) {
         GAME_GLOBALS.blockSize = value;
     },
@@ -19,12 +20,9 @@ var GAME_GLOBALS = {
         return GAME_GLOBALS.getBlockSize() * 15;
     },
 
-    debug: function (text) {
-        //me.game.HUD.updateItemValue("debug", text);
-
-        if ($('#debug-text')) {
-            $('#debug-text').html(text);
-        } 
+    debug: function (context, text) {
+        var debugFont = new me.Font("Arial", 20, "white");
+        debugFont.draw(context, text, 20, 20);
     }
 };
 
@@ -94,9 +92,7 @@ var jsApp = {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
         }
-
-        //me.video.scale(me.video.getScreenFrameBuffer(), 1.5);                 
-
+        
         me.audio.init("mp3");
 
         me.loader.onload = this.loaded.bind(this);
