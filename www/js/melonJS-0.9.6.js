@@ -773,9 +773,7 @@ var me = me || {};
 				
 				if (this.isJSON) {
 					// this won't work for now!
-				    //this.tmxDoc = JSON.parse(data);
-                    // parsed already
-				    this.tmxDoc = data;
+					this.tmxDoc = JSON.parse(data);
 				} else {
 					this.tmxDoc = data;
 				}
@@ -2629,12 +2627,11 @@ var me = me || {};
 		function preloadTMX(tmxData, onload, onerror) {
 			var xmlhttp = new XMLHttpRequest();
 			
-			var fileExtension = me.utils.getFileExtension(tmxData.src).toLowerCase();
-			if (fileExtension != 'json') {
-			    // to ensure our document is treated as a XML file
-			    if (xmlhttp.overrideMimeType)
-			        xmlhttp.overrideMimeType('text/xml');
-			} 
+			if (me.utils.getFileExtension(tmxData.src).toLowerCase() !== 'json') {
+				// to ensure our document is treated as a XML file
+				if (xmlhttp.overrideMimeType)
+					xmlhttp.overrideMimeType('text/xml');
+			}
 			
 			xmlhttp.open("GET", tmxData.src + me.nocache, true);
 						
@@ -2646,16 +2643,13 @@ var me = me || {};
 					// (With Chrome use "--allow-file-access-from-files --disable-web-security")
 					if ((xmlhttp.status==200) || ((xmlhttp.status==0) && xmlhttp.responseText)){
 						var result = null;
-					    // ie9 does not fully implement the responseXML
-						if (fileExtension == 'json') {
-						    result = JSON.parse(xmlhttp.responseText);
-						} else if (me.sys.ua.contains('msie') || !xmlhttp.responseXML) {
+						// ie9 does not fully implement the responseXML
+						if (me.sys.ua.contains('msie') || !xmlhttp.responseXML) {
 							// manually create the XML DOM
 							result = (new DOMParser()).parseFromString(xmlhttp.responseText, 'text/xml');
 						} else {
 							result = xmlhttp.responseXML;
 						}
-						console.log(JSON.stringify(result));                             
 						// get the TMX content
 						tmxList[tmxData.name] = {
 							data: result,
@@ -8119,7 +8113,7 @@ var me = me || {};
 		
 		// list of supported mouse & touch events
 		var mouseEventList = ['mousewheel', 'mousemove', 'mousedown',  'mouseup', 'click', 'dblclick'];
-		var touchEventList = [ undefined,   'touchmove', 'touchstart', 'touchend']; //, 'tap' , 'dbltap'];
+		var touchEventList = [ undefined,   'touchmove', 'touchstart', 'touchend', 'tap' , 'dbltap'];
 		
 		
 		/**
