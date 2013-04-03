@@ -19,6 +19,7 @@ var PlayScreen = me.ScreenObject.extend({
         me.game.sort();
 
         me.input.bindKey(me.input.KEY.ESC, "esc", true);
+        me.input.bindKey(me.input.KEY.SPACE, "space", true);
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
         me.input.bindTouch(me.input.KEY.SPACE);        
 
@@ -101,10 +102,12 @@ var TitleScreen = me.ScreenObject.extend({
         if (me.input.isKeyPressed('enter')) {
             me.state.change(me.state.PLAY);
         }
-            
-        if (me.input.touches[0].id != null && me.input.touches[0].id > 0) {
+        /*if (me.input.mouse.LEFT) {
             me.state.change(me.state.PLAY);
         }
+        if (me.input.touches[0].id != null && me.input.touches[0].id > 0) {
+            me.state.change(me.state.PLAY);
+        }*/
     },
 
     draw: function (context) {
@@ -116,7 +119,7 @@ var TitleScreen = me.ScreenObject.extend({
         } 
         this.font.draw(context, toPlayText, GAME_GLOBALS.getMapWidth() / 2, GAME_GLOBALS.getMapHeight() /2);
         this.scrollerfont.draw(context, this.scroller, this.scrollerpos, GAME_GLOBALS.getMapHeight() - GAME_GLOBALS.getBlockSize());
-        GAME_GLOBALS.debug(context, "touch enabled: " + me.sys.touch + " touches: " + me.input.touches.length + " " + 
+        GAME_GLOBALS.debug(context, "touch: " + (me.sys.touch) + " touches: " + me.input.touches.length + " " + 
             + me.input.touches[0].x + ", " + me.input.touches[0].y + ", " + me.input.touches[0].id);
     
     },

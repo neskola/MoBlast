@@ -87,7 +87,7 @@ var jsApp = {
 
         GAME_GLOBALS.setBlockSize(48);
 	    
-        if (!me.video.init('jsApp', GAME_GLOBALS.getMapWidth(),
+        if (!me.video.init('#jsApp', GAME_GLOBALS.getMapWidth(),
         GAME_GLOBALS.getMapHeight(), false, 1.0)) {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
@@ -110,12 +110,12 @@ var jsApp = {
         me.entityPool.add("mainPlayer", PlayerEntity);
         //me.entityPool.add("bomb", BombEntity);
         me.entityPool.add("CoinEntity", CoinEntity);
-        me.input.bindKey(me.input.KEY.LEFT, "left");
+        /*me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP, "up");
         me.input.bindKey(me.input.KEY.DOWN, "down");
         me.input.bindKey(me.input.KEY.SPACE, "space");
-        me.input.bindKey(me.input.KEY.ESC, "esc");
+        me.input.bindKey(me.input.KEY.ESC, "esc");*/
         //me.debug.renderHitBox = true;
         //me.debug.renderCollisionMap = true;        
 
