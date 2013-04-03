@@ -773,7 +773,9 @@ var me = me || {};
 				
 				if (this.isJSON) {
 					// this won't work for now!
-					this.tmxDoc = JSON.parse(data);
+				    //this.tmxDoc = JSON.parse(data);
+                    // parsed already
+				    this.tmxDoc = data;
 				} else {
 					this.tmxDoc = data;
 				}
