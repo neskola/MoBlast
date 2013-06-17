@@ -29,12 +29,12 @@ var PlayerEntity = me.ObjectEntity.extend({
         this.next.setY = function (value) {
             this.y = GAME_GLOBALS.getMapBlock(value);
         }
-
-        this.addAnimation("walk_down", [0, 1, 2]);        
-        this.addAnimation("walk_right", [3, 4, 5]);
-        this.addAnimation("walk_left", [6, 7, 8]);
-        this.addAnimation("walk_up", [9, 10, 11]);        
-        this.setCurrentAnimation("walk_down");
+        
+        this.renderable.addAnimation("walk_down", [0, 1, 2]);        
+        this.renderable.addAnimation("walk_right", [3, 4, 5]);
+        this.renderable.addAnimation("walk_left", [6, 7, 8]);
+        this.renderable.addAnimation("walk_up", [9, 10, 11]);        
+        this.renderable.setCurrentAnimation("walk_down");
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         
     },
@@ -158,22 +158,22 @@ var PlayerEntity = me.ObjectEntity.extend({
             case UP:
                 this.vel.y -= this.accel.y * me.timer.tick;
                 this.vel.x = 0;
-                this.setCurrentAnimation("walk_up");
+                this.renderable.setCurrentAnimation("walk_up");
                 break;
             case RIGHT:
                 this.doWalk(false);
                 this.vel.y = 0;
-                this.setCurrentAnimation("walk_left");
+                this.renderable.setCurrentAnimation("walk_left");
                 break;
             case DOWN:
                 this.vel.y += this.accel.y * me.timer.tick;
                 this.vel.x = 0;
-                this.setCurrentAnimation("walk_down");
+                this.renderable.setCurrentAnimation("walk_down");
                 break;
             case LEFT:
                 this.doWalk(true);
                 this.vel.y = 0;
-                this.setCurrentAnimation("walk_left");
+                this.renderable.setCurrentAnimation("walk_left");
                 break;
             default:
                 this.vel.y = 0;
