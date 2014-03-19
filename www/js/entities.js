@@ -62,9 +62,9 @@ var PlayerEntity = me.ObjectEntity.extend({
                 this.next.setX(mousePos.x);
                 this.next.setY(mousePos.y);
 
-                GAME_GLOBALS.debug("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
-                    + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
-                    + this.direction + ", " + this.next.toString());
+                //GAME_GLOBALS.debug("mouse x: " + mousePos.x + ", y:" + mousePos.y + "; player x: "
+                //    + this.pos.x + ", y:" + this.pos.y + ", angle:" + angle + ", direction:"
+                //    + this.direction + ", " + this.next.toString());
             } else {
                 this.next.direction = this.direction;
                 GAME_GLOBALS.debug("set a bomb on x: " + this.x + ", y:" + this.y);           
@@ -137,8 +137,8 @@ var PlayerEntity = me.ObjectEntity.extend({
 
 
         if (this.direction == LEFT || this.direction == RIGHT) {
-            console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE 
-                + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
+            //console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE 
+            //    + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
             if (this.pos.x == this.next.x * BLOCK_SIZE) {
                 this.direction = STOP;
                 this.next.direction = STOP;
@@ -146,8 +146,8 @@ var PlayerEntity = me.ObjectEntity.extend({
         }
 
         if (this.direction == UP || this.direction == DOWN) {            
-            console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE
-                + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
+            //console.log("x:" + this.pos.x + "=" + this.next.x * BLOCK_SIZE
+            //    + ", y:" + this.pos.y + "=" + this.next.y * BLOCK_SIZE);
             if (this.pos.y == this.next.y * BLOCK_SIZE) {
                 this.direction = STOP;
                 this.next.direction = STOP;

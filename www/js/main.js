@@ -89,11 +89,11 @@ var jsApp = {
 							
         GAME_GLOBALS.setBlockSize(48);
 	    
-        if (!me.video.init('#jsApp', GAME_GLOBALS.getMapWidth(),
+        /*if (!me.video.init('#jsApp', GAME_GLOBALS.getMapWidth(),
         GAME_GLOBALS.getMapHeight(), false, 1.0)) {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
-        }
+        }*/
         
         me.audio.init("mp3");
 
